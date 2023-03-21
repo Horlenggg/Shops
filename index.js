@@ -7,5 +7,6 @@ app.listen(5000,()=>{
 })
 
 app.get('/',(req,res)=>{
-    res.json(req.query);
+    const {id,username,email} = req.body;
+    res.json({id,username,email});
 })
