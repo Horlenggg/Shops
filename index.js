@@ -1,2 +1,11 @@
-const str = Math.random().toString(36).substr(2)+Math.random().toString(36).substr(2);
-console.log({str}); 
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+app.listen(5000,()=>{
+    console.log('http://localhost:5000');
+})
+
+app.get('/',(req,res)=>{
+    res.json(req.query);
+})
