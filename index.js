@@ -6,7 +6,7 @@ app.use(express.json());
 app.listen(5000,()=>{
     console.log('http://localhost:5000');
 })
-const upl = multer({storage:new multer.diskStorage({
+const upl = multer({storage: new multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,'./');
     },
@@ -19,5 +19,6 @@ app.post('/',upl.single('image'),(req,res)=>{
     fs.writeFile('image.png',base,{encoding:'base64'},(err,result)=>{
         console.log('file created successsfully');
     })
+    console.log(base.length);
     res.json({base:"data:image/gif;base64,"+base});
 })
